@@ -1,4 +1,5 @@
 import troll from './images/troll-face.png';
+import Form from './components/Form.js';
 import './App.css';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
         <h1 className="header--title">Meme Generator</h1>
         <h4 className="sub--title">React Course - Project 3</h4>
       </header>
+      <Form />
     </div>
   );
 }
