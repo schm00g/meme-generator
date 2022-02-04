@@ -14,22 +14,36 @@ export default function Form(){
         event.preventDefault()
         const memesArray = memesData.data.memes;
         const randomNumber = Math.floor(Math.random() * memesArray.length);
-        setMeme(prevState => {
+        setMeme(prevMeme => {
             return {
-                ...meme,
+                ...prevMeme,
                 randomImage: memesArray[randomNumber].url
             }
         });
     }
 
+    function handleChange(event){
+        const {name, value} = event.target;
+        setMeme(prevState => {
+            return {
+                ...prevState,
+                [name]: value,        
+            }
+        })
+    }
+
     return (
         <main>
             <form className="input--form">
-                <input className="form--input" type="text" placeholder="top text"></input>
-                <input className="form--input" type="text" placeholder="bottom text"></input>
+                <input onChange={handleChange} className="form--input" type="text" placeholder="top text" name="topText" value={meme.topText}></input>
+                <input onChange={handleChange} className="form--input" type="text" placeholder="bottom text" name="bottomText" value={meme.bottomText}></input>
                 <button onClick={grabMeme} className="form--button">Get a new image 🖼</button>
             </form>
-            <img src={meme.randomImage} alt="meme" className="meme--image"/>
+            <div className="meme">
+                <img src={meme.randomImage} alt="meme" className="meme--image" />
+                <h2 className="meme--text top">{meme.topText}</h2>
+                <h2 className="meme--text bottom">{meme.bottomText}</h2>
+            </div>
         </main>
     )
 }
