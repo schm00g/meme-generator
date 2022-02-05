@@ -3,6 +3,7 @@ import memesData from "../memesData";
 
 
 export default function Form(){
+    // react will create state first
     const [meme, setMeme] = React.useState({
         topText: "",
         bottomText: "",
@@ -32,6 +33,8 @@ export default function Form(){
         })
     }
 
+    // after creating state react will render the html (if useEffect present this will follow)
+    // https://reactjs.org/docs/hooks-effect.html
     return (
         <main>
             <form className="input--form">
